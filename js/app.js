@@ -56,46 +56,48 @@ if (answerFour === 'yes' || answerFour === 'y'){
 
 alert(`Thanks for playing my get to know me game ${userName}!`);
 
-let answerSix = prompt("Let's play a guessing game now! Pick a number please!");
-
+// number guessing game
+let answerSix = +prompt("Let's play a guessing game now! Pick a number please!");
+  
 for (let i = 1; i < 4; i++) {
-
   if (answerSix > 10){
     alert("Too high. Guess again!");
-    answerSix = prompt("guess again...");
+    answerSix = +prompt("guess again...");
     console.log("Too high. Guess again!");
   } else if (answerSix < 5){
     alert("Too low. Try again!");
-    answerSix = prompt("guess again...");
+    answerSix = +prompt("guess again...");
     console.log("Too low. Try again!");
-  } else if (answerSix == 7 || answerSix == 8 || answerSix == 9){
+  } else if (answerSix === 7 || answerSix === 8 || answerSix === 9){
     alert("You guess correct!");
+    i = 4; // corrected to leave loop once guessed correct
     correctAnswers++;
-    i = 4;
-    break;
+  } else if (i == 4) {
+    alert("Too many guesses! The answers were 7, 8, or 9!");
   };
 
 };
+alert("Correct answers were 7! Nice job!");
 
-alert("Correct answers were 7, 8, and 9! Nice job!");
-
+// Favorite anything guesing game
 let guesses = 1;
-let answers = ['durian', 'mint chip', 'pineapple coconut'];
+let answers = ["durian", "mint chip", "pineapple coconut"];
 let answerSeven = prompt("Can you guess my what my favorite flavor ice cream is?");
 
-while(guesses < 6){ // changed conditional in this logic
+while(guesses < 6){
+  console.log('answerseven ' + answerSeven);
   if (answerSeven === answers[0] || answerSeven === answers[1] || answerSeven === answers[2]){
     alert("Correct! I love that one!");
     correctAnswers++;
-    guesses = 7; 
-  } else if (guesses === 6){
-    alert("Too many guesses. Game over")
+    guesses = 7;
+
   } else {
     alert("Wrong, I don't like that one!");
     answerSeven = prompt("Guess again!");
   }
   guesses++;
-}
+  console.log(guesses);
+};
 
 alert(`My favorite ice creams are ${answers[0]}, ${answers[1]}, and ${answers[2]}!`);
 alert(`Your total correct answers are ${correctAnswers} out of 7!`);
